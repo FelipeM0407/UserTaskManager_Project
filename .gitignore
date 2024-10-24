@@ -2,9 +2,6 @@
 API_NET/**/bin/
 API_NET/**/obj/
 
-# Ignore SQLite database
-API_NET/**/*.db
-
 # Ignore logs
 API_NET/**/*.log
 
