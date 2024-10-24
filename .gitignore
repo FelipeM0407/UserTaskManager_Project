@@ -1,0 +1,38 @@
+# Ignore build output directories
+API_NET/**/bin/
+API_NET/**/obj/
+
+# Ignore SQLite database
+API_NET/**/*.db
+
+# Ignore logs
+API_NET/**/*.log
+
+# Ignore user-specific files
+API_NET/**/*.suo
+API_NET/**/*.user
+API_NET/**/*.userosscache
+API_NET/**/*.rsuser
+
+# Ignore Visual Studio Code files
+API_NET/.vscode/
+
+# Ignore Rider project files
+API_NET/.idea/
+API_NET/.idea_modules/
+
+# Ignore npm logs and package directories
+API_NET/node_modules/
+API_NET/npm-debug.log
+API_NET/yarn-debug.log
+API_NET/yarn-error.log
+
+# Ignore OS generated files
+API_NET/Thumbs.db
+API_NET/Desktop.ini
+API_NET/$RECYCLE.BIN/
+API_NET/.DS_Store
+
+# Ignore publish output
+API_NET/**/publish/
+API_NET/wwwroot/
