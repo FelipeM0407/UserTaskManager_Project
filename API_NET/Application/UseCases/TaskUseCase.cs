@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Application.DTOs;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Enum;
 using Domain.Interfaces;
 
 namespace Application.UseCases
@@ -42,6 +43,12 @@ namespace Application.UseCases
 
         public async Task UpdateTaskAsync(int id, UserTaskDTO dto)
         {
+
+            if (!Enum.IsDefined(typeof(UserTaskStatus), dto.Status))
+            {
+                throw new Exception("Status not found");
+            }
+
             var task = await _userTaskRepository.GetByIdAsync(id);
             if (task == null) throw new Exception("Task not found");
 
