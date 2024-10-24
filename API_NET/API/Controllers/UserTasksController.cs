@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Application.UseCases;
 using Application.DTOs;
 using Microsoft.Extensions.Logging;
+using Domain.Enum;
 
 namespace API.Controllers
 {
@@ -69,6 +70,12 @@ namespace API.Controllers
 
             try
             {
+
+                if (dto.Status == 0)
+                {
+                    dto.Status = (int)UserTaskStatus.Pending;
+                }
+
                 await _userTaskUseCase.CreateTaskAsync(dto);
                 return Ok(new { Message = "Task created successfully." });
             }
@@ -96,6 +103,12 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error updating task with ID {id}.");
+
+                if (ex.Message == "Status not found")
+                {
+                    return BadRequest(new { Message = "Status not found" });
+                }
+                
                 return StatusCode(500, new { Message = "An error occurred while updating the task." });
             }
         }
